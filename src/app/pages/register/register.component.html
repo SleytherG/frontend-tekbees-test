@@ -1,0 +1,31 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header font-weight-bold">Registro</div>
+        <div class="card-body">
+          <form [formGroup]="registerForm" (ngSubmit)="register()">
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input formControlName="username" type="text" class="form-control" id="username" placeholder="Ingrese su username">
+            </div>
+            <div class="form-group">
+              <label for="nombres">Nombres</label>
+              <input formControlName="nombres" type="text" class="form-control" id="nombres" placeholder="Ingrese su(s) nombre(s)">
+            </div>
+            <div class="form-group">
+              <label for="apellidos">Apellidos</label>
+              <input formControlName="apellidos" type="text" class="form-control" id="apellidos" placeholder="Ingrese su(s) apellido(s)">
+            </div>
+            <div class="form-group">
+              <label for="password">Contraseña</label>
+              <input formControlName="password" type="password" class="form-control" id="password" placeholder="Ingrese su contraseña">
+            </div>
+            <button type="submit" class="btn btn-primary">Registrarse</button>
+            <a [routerLink]="['../login']" class="ml-2" style="cursor: pointer">¿Ya tienes cuenta? <span class="font-weight-bold">Inicia Sesión</span></a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

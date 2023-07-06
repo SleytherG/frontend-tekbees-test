@@ -1,0 +1,38 @@
+<div class="container mt-3 mb-5">
+  <div class="row d-flex justify-content-center align-items">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <div class="d-flex justify-content-between">
+            <h2>Cuentas de Ahorros</h2>
+            <button (click)="openModalTransaction()" class="btn btn-warning">Realizar transacción</button>
+          </div>
+        </div>
+        <div class="card-body" *ngFor="let account of accounts; let index = index">
+          <div style="cursor: pointer" (click)="getTransactionsByAccount(account.idCuenta)">
+            <h5 class="card-title font-weight-bold">Cuenta Ahorros Digital {{ index + 1}}</h5>
+            <h5 class="card-title" style="font-size: 1rem">{{ account.nroCuenta }}</h5>
+            <p class="card-text font-weight-bold">{{ account.fondos | currency: 'S/ ' }} </p>
+            Saldo disponible
+          </div>
+        <hr/>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row d-flex justify-content-center align-items" *ngIf="transactions.length">
+    <div class="col-md-6 mt-3">
+      <h5 class="text-right font-weight-bold" style="font-size: 1rem">Últimos movimientos</h5>
+      <div class="card mt-2" *ngFor="let transaction of transactions; let index = index">
+<!--        <div class="card-header">-->
+<!--          <h5 class="font-weight-bold">Transacción #{{index + 1}}</h5>-->
+<!--        </div>-->
+        <div class="card-body">
+          <h5 class="card-title font-weight-bold" style="font-size: 1rem">{{ transaction.monto | currency: 'S/ ' }} </h5>
+          <span >{{ transaction.descripcion}}</span>
+          <p class="card-text"><span class="font-weight-bold">{{ transaction.fechaOperacion | date: 'dd/MM/YYYY' }}</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+<h2 mat-dialog-title>Realizar transacción</h2>
+<mat-dialog-content>
+
+  <div class="mb-3">
+    <div class="row">
+      <div class="col-md-12">
+        <mat-select placeholder="Cuenta origen" [(ngModel)]="accountOrigen">
+          <mat-option disabled>Seleccione cuenta</mat-option>
+          <mat-option [value]="account.nroCuenta" *ngFor="let account of accounts">{{ account.nroCuenta }}</mat-option>
+        </mat-select>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <div class="row">
+      <div class="col-md-12">
+        <mat-select placeholder="Cuenta destino" [(ngModel)]="accountDestino" [disabled]="!accountOrigen">
+          <mat-option disabled>Seleccione cuenta</mat-option>
+          <mat-option [value]="account.nroCuenta" *ngFor="let account of accountsFiltered">{{ account.nroCuenta }}</mat-option>
+        </mat-select>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="monto" class="form-label">Monto a transferir</label>
+    <input type="number" class="form-control" id="monto" [(ngModel)]="amountToTransfer">
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions [align]="'end'">
+  <button mat-button (click)="closeDialog()">Cancelar</button>
+  <button mat-button color="primary" (click)="doTransaction()">Transferir</button>
+</mat-dialog-actions>
